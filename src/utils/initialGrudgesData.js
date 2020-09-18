@@ -2,7 +2,7 @@ import name from 'random-name';
 import id from 'uuid/v4';
 
 // This is some dummy data.
-const initialState = [
+const initialGrudgesData = [
   {
     id: id(),
     person: name.first(),
@@ -71,4 +71,4 @@ const initialState = [
   }
 ];
 
-export default initialState;
+export default initialGrudgesData;

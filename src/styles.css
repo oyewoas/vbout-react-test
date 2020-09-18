@@ -26,6 +26,13 @@ input[type='submit'] {
   color: white;
   padding: 0.5em;
   transition: all 0.2s;
+  cursor: pointer;
+}
+
+button:disabled,
+.button:disabled,
+input[type='submit']:disabled {
+  cursor: not-allowed;
 }
 
 button:hover,
@@ -78,4 +85,13 @@ input[type='submit'].full-width {
 
 .NewGrudge-input {
   width: 100%;
+}
+
+.undoRedo-btn{
+  margin-top: 1em;
+  float: right;
+}
+
+.undoRedo-btn button {
+   margin-left: 0.5em;
 }

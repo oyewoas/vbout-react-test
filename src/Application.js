@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import id from 'uuid/v4';
 
-import Grudges from './Grudges';
-import NewGrudge from './NewGrudge';
+import Grudges from './components/Grudges';
+import NewGrudge from './components/NewGrudge';
+import UndoRedo from './components/UndoRedo';
 
-import initialState from './initialState';
+import initialGrudgesData from './utils/initialGrudgesData';
+
+import useUndoRedo from './hooks/useUndoRedo';
 
 const Application = () => {
-  const [grudges, setGrudges] = useState(initialState);
+  const {
+    state: grudges,
+    set: setGrudges,
+    undo,
+    redo,
+    clear,
+    canUndo,
+    canRedo
+  } = useUndoRedo(initialGrudgesData);
 
   const addGrudge = (grudge) => {
     grudge.id = id();
@@ -28,6 +39,13 @@ const Application = () => {
   return (
     <div className="Application">
       <NewGrudge onSubmit={addGrudge} />
+      <UndoRedo
+        undo={undo}
+        redo={redo}
+        clear={clear}
+        canRedo={canRedo}
+        canUndo={canUndo}
+      />
       <Grudges grudges={grudges} onForgive={toggleForgiveness} />
     </div>
   );
